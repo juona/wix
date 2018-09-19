@@ -44,7 +44,7 @@ export default class AddNodeButton extends React.Component {
 
   render() {
 		const promptStyle = { display: this.state.isPromptVisible ? "inline" : "none" };
-		const newNodeLabel = this.props.label || "New Node";
+		const newNodeLabel = this.props.label || "New Child Node";
     return (
       <span style={{ paddingLeft: "5px" }}>
         <input type="button" value={newNodeLabel} onClick={this.displayPrompt} />

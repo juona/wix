@@ -1,4 +1,10 @@
 export default [
+	{
+		name: "TEST"
+	},
+	{
+		name: "TEST"
+	},
   {
     name: "Lorem",
     children: [
@@ -47,9 +53,18 @@ export default [
                 name: "Vitae"
               }
             ]
-          }
+					},
+					{
+						name: "OHO!"
+					}
         ]
       }
     ]
-  }
+	},
+	{
+		name: "TEST"
+	},
+	{
+		name: "TEST"
+	}
 ];

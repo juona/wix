@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import AppRecursive from "./AppRecursive.js";
+import App from "./App.js";
 
 const appContainer = document.createElement("div");
 document.body.appendChild(appContainer);
 
-render(<AppRecursive/>, appContainer);
+render(<App/>, appContainer);
