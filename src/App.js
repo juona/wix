@@ -45,20 +45,20 @@ export default class App extends React.Component {
 
   getTreeBuilder() {
     return new treeBuilders[this.state.selectedTreeBuilder]({
-			create: this.createComponentNode.bind(this)
-		});
-	}
-	
-	getTree() {
-		const treeBuilder = this.getTreeBuilder();
-		const startTime = Date.now();		
-		const tree = treeBuilder.build(this.state.tree);
-		const executionTime = Date.now() - startTime;
-		return {
-			tree,
-			executionTime
-		};
-	}
+      create: this.createComponentNode.bind(this)
+    });
+  }
+
+  getTree() {
+    const treeBuilder = this.getTreeBuilder();
+    const startTime = Date.now();
+    const tree = treeBuilder.build(this.state.tree);
+    const executionTime = Date.now() - startTime;
+    return {
+      tree,
+      executionTime
+    };
+  }
 
   createComponentNode(index, node, children) {
     return (
@@ -78,28 +78,28 @@ export default class App extends React.Component {
   }
 
   render() {
-		let treeAndAddButton;
-		let rowStyle = { paddingTop: "10px" };
-		
-		if (this.state.selectedTreeBuilder !== "None") {
-			let treeData = this.getTree();
-			treeAndAddButton = [
-				<div key="0" style={rowStyle}>
-					{treeData.tree}
-				</div>,
-				<div style={rowStyle} key="1">
-					<AddButton onAdd={this.addRootNode} label="New Root Node" />
-				</div>,
-				<div style={rowStyle} key="2">
-					Algorithm took roughly {treeData.executionTime} ms to execute.
-				</div>
-			];
-		}
-		
+    let treeAndAddButton;
+    let rowStyle = { paddingTop: "10px" };
+
+    if (this.state.selectedTreeBuilder !== "None") {
+      let treeData = this.getTree();
+      treeAndAddButton = [
+        <div key="0" style={rowStyle}>
+          {treeData.tree}
+        </div>,
+        <div style={rowStyle} key="1">
+          <AddButton onAdd={this.addRootNode} label="New Root Node" />
+        </div>,
+        <div style={rowStyle} key="2">
+          Algorithm took roughly {treeData.executionTime} ms to execute.
+        </div>
+      ];
+    }
+
     return (
       <div>
         <section>
-					{this.createBuilderButton("None")}
+          {this.createBuilderButton("None")}
           {this.createBuilderButton("Recursive")}
           {this.createBuilderButton("Iterative")}
         </section>

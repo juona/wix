@@ -1,10 +1,4 @@
 export default [
-	{
-		name: "TEST"
-	},
-	{
-		name: "TEST"
-	},
   {
     name: "Lorem",
     children: [
@@ -28,19 +22,19 @@ export default [
             ]
           }
         ]
-			},
-			{
+      },
+      {
         name: "Sit",
         children: [
           {
             name: "Amet"
-					},
-					{
-						name: "Consectetur"
-					}
+          },
+          {
+            name: "Consectetur"
+          }
         ]
-			},
-			{
+      },
+      {
         name: "Adipiscing",
         children: [
           {
@@ -48,23 +42,25 @@ export default [
             children: [
               {
                 name: "Vestibulum"
-							},
-							{
+              },
+              {
                 name: "Vitae"
               }
             ]
-					},
-					{
-						name: "OHO!"
-					}
+          },
+          {
+            name: "OHO!"
+          }
         ]
       }
     ]
-	},
-	{
-		name: "TEST"
-	},
-	{
-		name: "TEST"
-	}
+  },
+  {
+    name: "Another root Node",
+    children: [
+      {
+        name: "Another child"
+      }
+    ]
+  }
 ];

@@ -48,36 +48,36 @@ export default class IterativeTreeBuilder {
           );
           currentIndex++;
         }
-			}
+      }
 
-			// Whenever execution reaches this point we can be sure that:
-			//  - the branch we are currently at is fully constructed
-			//  - all preceding sibling branches in the PARENT branch have already been fully constructed
-			// We need to do the following:
-			//  - insert the tree we have just constructed (siblingNodeComponents) into the corresponding parent node
-			//  - step out to the parent branch and continue with its iteration
+      // Whenever execution reaches this point we can be sure that:
+      //  - the branch we are currently at is fully constructed
+      //  - all preceding sibling branches in the PARENT branch have already been fully constructed
+      // We need to do the following:
+      //  - insert the tree we have just constructed (siblingNodeComponents) into the corresponding parent node
+      //  - step out to the parent branch and continue with its iteration
 
-			// Root branch does not have parent branches, so a guard is necessary
-			if (parentIndices.length) {
-				// Save the constructed React branch into a temp variable
-				// We would otherwise lose it after stepping out to the previous tree branch
-				let childNodeComponents = siblingNodeComponents;
+      // Root branch does not have parent branches, so a guard is necessary
+      if (parentIndices.length) {
+        // Save the constructed React branch into a temp variable
+        // We would otherwise lose it after stepping out to the previous tree branch
+        let childNodeComponents = siblingNodeComponents;
 
-				// Step out to the previous tree branch (restore previous iteration state)
-				nodes = parentNodes.pop();
-				currentIndex = parentIndices.pop();
-				currentNode = nodes[currentIndex];
-				siblingNodeComponents = componentsMemory.pop();
+        // Step out to the previous tree branch (restore previous iteration state)
+        nodes = parentNodes.pop();
+        currentIndex = parentIndices.pop();
+        currentNode = nodes[currentIndex];
+        siblingNodeComponents = componentsMemory.pop();
 
-				// Create a node component with all its children
-				siblingNodeComponents.push(
-					this.createNodeComponent(parentIndices, currentIndex, currentNode, childNodeComponents)
-				);
-			}
-      
-			currentIndex++;
+        // Create a node component with all its children
+        siblingNodeComponents.push(
+          this.createNodeComponent(parentIndices, currentIndex, currentNode, childNodeComponents)
+        );
+      }
 
-		// Either we have more nodes in this branch or at least one more parent branch to work with
+      currentIndex++;
+
+      // Either we have more nodes in this branch or at least one more parent branch to work with
     } while (currentIndex < nodes.length || parentIndices.length);
 
     return siblingNodeComponents;
